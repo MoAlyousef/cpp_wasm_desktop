@@ -18,6 +18,7 @@ jobs:
          if [ "$RUNNER_OS" == "Linux" ]; then
           sudo apt-get install libwebkit2gtk-4.0-dev
          fi
+      shell: bash
     - uses: actions/checkout@v2
     - name: Build
       run: cd backend && cmake -Bbin && cmake --build bin
