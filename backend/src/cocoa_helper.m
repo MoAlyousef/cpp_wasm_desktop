@@ -1,4 +1,5 @@
 #include "cocoa_helper.h"
+#import <Cocoa/Cocoa.h>
 
 void add_nsmenu(void) {
     id menubar = [[NSMenu alloc] initWithTitle:@""];
