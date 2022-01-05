@@ -1,0 +1,23 @@
+name: backend
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest, macos-10.15, ubuntu-18.04]
+    steps:
+    - name: Download deps
+      run: |
+         if [ "$RUNNER_OS" == "Linux" ]; then
+          sudo apt-get install libwebkit2gtk-4.0-dev
+         fi
+    - uses: actions/checkout@v2
+    - name: Build
+      run: cd backend && cmake -Bbin && cmake --build bin
